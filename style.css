@@ -21,7 +21,7 @@ body {
 /* ==========================================
    SECCIONES PRINCIPALES
    ========================================== */
-.hero, .story, .gallery {
+.hero, .story, .plan, .gallery {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -164,11 +164,116 @@ button:hover {
 }
 
 /* ==========================================
+   ESTILOS DE LA CARTA DE CUMPLEAÑOS
+   ========================================== */
+.letter {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2.5rem 1.5rem;
+}
+
+.letter-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 101, 132, 0.25);
+    backdrop-filter: blur(12px);
+    padding: 2.5rem 2rem;
+    border-radius: 24px;
+    max-width: 550px;
+    width: 100%;
+    text-align: left;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+}
+
+.letter-card .eyebrow {
+    text-align: center;
+}
+
+.letter-card h2 {
+    text-align: center;
+    color: #ff6584;
+    margin-bottom: 1.5rem;
+}
+
+.letter-body {
+    color: #e2d9f3;
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.letter-body p {
+    margin-bottom: 1.2rem;
+}
+
+.letter-body .signature {
+    margin-top: 2rem;
+    text-align: right;
+    font-size: 1.1rem;
+    color: #b892ff;
+}
+
+.letter-card button {
+    display: flex;
+    margin: 2rem auto 0 auto;
+}
+
+/* ==========================================
+   TARJETAS DEL PLAN / ITINERARIO
+   ========================================== */
+.itinerary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 900px;
+    margin: 2rem 0;
+}
+
+.itinerary-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 18px;
+    padding: 1.8rem;
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.itinerary-card:hover {
+    transform: translateY(-5px);
+    border-color: #ff6584;
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.itinerary-card h3 {
+    font-size: 1.2rem;
+    color: #ff6584;
+    margin-bottom: 0.5rem;
+}
+
+.itinerary-card p {
+    font-size: 0.95rem;
+    color: #cbb8db;
+    line-height: 1.5;
+}
+
+.plan-footer-text {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #b892ff;
+    margin-bottom: 2rem;
+}
+
+/* ==========================================
    GALERÍA DE FOTOS
    ========================================== */
 .photo-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 1.2rem;
     width: 100%;
     max-width: 900px;
