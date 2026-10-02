@@ -1,78 +1,24 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    // =========================
-    // ELEMENTOS
-    // =========================
+    // ==========================================
+    // SELECCIÓN DE ELEMENTOS DEL DOM
+    // ==========================================
     const openButton = document.getElementById("openButton");
-    const story = document.getElementById("story");
-    
     const letterButton = document.getElementById("letterButton");
-    const letter = document.getElementById("letter");
-    
     const planButton = document.getElementById("planButton");
-    const plan = document.getElementById("plan");
-    
     const continueButton = document.getElementById("continueButton");
-    const gallery = document.getElementById("gallery");
 
-    // =========================
-    // FECHA DE INICIO (Año, Mes, Día)
-    // 14 de Febrero de 2023 -> new Date(2023, 1, 14)
-    // =========================
-    const fechaInicio = new Date(2023, 1, 14);
+    const storySection = document.getElementById("story");
+    const letterSection = document.getElementById("letter");
+    const planSection = document.getElementById("plan");
+    const gallerySection = document.getElementById("gallery");
 
-    // =========================
-    // EVENTOS DE NAVEGACIÓN
-    // =========================
+    // Fecha de inicio de su relación: 14 de Febrero de 2023
+    const fechaInicio = new Date(2023, 1, 14); // Nota: En JS los meses van de 0 a 11 (1 es Febrero)
 
-    // 1. Abrir Historia y Contador
-    if (openButton && story) {
-        openButton.addEventListener("click", function () {
-            story.classList.remove("hidden");
-            actualizarContador();
-
-            setTimeout(function () {
-                story.scrollIntoView({ behavior: "smooth" });
-            }, 100);
-        });
-    }
-
-    // 2. Abrir Carta (Solución al botón que no reaccionaba)
-    if (letterButton && letter) {
-        letterButton.addEventListener("click", function () {
-            letter.classList.remove("hidden");
-
-            setTimeout(function () {
-                letter.scrollIntoView({ behavior: "smooth" });
-            }, 100);
-        });
-    }
-
-    // 3. Abrir Plan de Hoy (Regalo)
-    if (planButton && plan) {
-        planButton.addEventListener("click", function () {
-            plan.classList.remove("hidden");
-
-            setTimeout(function () {
-                plan.scrollIntoView({ behavior: "smooth" });
-            }, 100);
-        });
-    }
-
-    // 4. Abrir Galería
-    if (continueButton && gallery) {
-        continueButton.addEventListener("click", function () {
-            gallery.classList.remove("hidden");
-
-            setTimeout(function () {
-                gallery.scrollIntoView({ behavior: "smooth" });
-            }, 100);
-        });
-    }
-
-    // =========================
-    // CONTADOR DE TIEMPO
-    // =========================
+    // ==========================================
+    // FUNCIÓN PARA CALCULAR Y MOSTRAR EL TIEMPO
+    // ==========================================
     function actualizarContador() {
         const ahora = new Date();
 
@@ -82,12 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (días < 0) {
             meses--;
-            const ultimoDia = new Date(
-                ahora.getFullYear(),
-                ahora.getMonth(),
-                0
-            ).getDate();
-            días += ultimoDia;
+            const ultimoDiaMesAnterior = new Date(ahora.getFullYear(), ahora.getMonth(), 0).getDate();
+            días += ultimoDiaMesAnterior;
         }
 
         if (meses < 0) {
@@ -102,6 +44,55 @@ document.addEventListener("DOMContentLoaded", function () {
         if (yearsElem) yearsElem.textContent = años;
         if (monthsElem) monthsElem.textContent = meses;
         if (daysElem) daysElem.textContent = días;
+    }
+
+    // ==========================================
+    // CONTROLADORES DE EVENTOS (CLICS DE BOTONES)
+    // ==========================================
+
+    // 1. Clic en "Abrir tu sorpresa ♡" -> Muestra Historia / Contador
+    if (openButton && storySection) {
+        openButton.addEventListener("click", function () {
+            storySection.classList.remove("hidden");
+            actualizarContador();
+            
+            setTimeout(function () {
+                storySection.scrollIntoView({ behavior: "smooth" });
+            }, 100);
+        });
+    }
+
+    // 2. Clic en "Leer mi carta para ti 💌" -> Muestra La Carta
+    if (letterButton && letterSection) {
+        letterButton.addEventListener("click", function () {
+            letterSection.classList.remove("hidden");
+
+            setTimeout(function () {
+                letterSection.scrollIntoView({ behavior: "smooth" });
+            }, 100);
+        });
+    }
+
+    // 3. Clic en "Ver tu regalo de cumpleaños 🎁" -> Muestra El Plan de Hoy
+    if (planButton && planSection) {
+        planButton.addEventListener("click", function () {
+            planSection.classList.remove("hidden");
+
+            setTimeout(function () {
+                planSection.scrollIntoView({ behavior: "smooth" });
+            }, 100);
+        });
+    }
+
+    // 4. Clic en "Ver nuestros recuerdos ♡" -> Muestra La Galería
+    if (continueButton && gallerySection) {
+        continueButton.addEventListener("click", function () {
+            gallerySection.classList.remove("hidden");
+
+            setTimeout(function () {
+                gallerySection.scrollIntoView({ behavior: "smooth" });
+            }, 100);
+        });
     }
 
 });
