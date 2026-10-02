@@ -1,167 +1,115 @@
-document.addEventListener("DOMContentLoaded", function () {
-
-
-    // =========================
-    // ELEMENTOS DE LA PÁGINA
-    // =========================
-
-    const boton = document.getElementById("openButton");
-
-    const historia = document.getElementById("story");
-
-    const continueButton =
-        document.getElementById("continueButton");
-
-    const gallery =
-        document.getElementById("gallery");
-
-
-    // =========================
-    // FECHA EN QUE COMENZÓ
-    // NUESTRA HISTORIA
-    // =========================
-
-    const fechaInicio =
-        new Date(2023, 1, 14);
-
-
-    // =========================
-    // ABRIR SORPRESA
-    // =========================
-
-    boton.addEventListener("click", function () {
-
-
-        // Mostrar sección historia
-
-        historia.classList.remove("hidden");
-
-
-        // Actualizar contador
-
-        actualizarContador();
-
-
-        // Desplazarse suavemente
-
-        setTimeout(function () {
-
-            historia.scrollIntoView({
-                behavior: "smooth"
-            });
-
-        }, 100);
-
-    });
-
-
-    // =========================
-    // CONTADOR DE RELACIÓN
-    // =========================
-
-    function actualizarContador() {
-
-
-        const ahora = new Date();
-
-
-        let años =
-            ahora.getFullYear() -
-            fechaInicio.getFullYear();
-
-
-        let meses =
-            ahora.getMonth() -
-            fechaInicio.getMonth();
-
-
-        let días =
-            ahora.getDate() -
-            fechaInicio.getDate();
-
-
-        // =========================
-        // AJUSTAR DÍAS
-        // =========================
-
-        if (días < 0) {
-
-
-            meses--;
-
-
-            const ultimoDia =
-                new Date(
-                    ahora.getFullYear(),
-                    ahora.getMonth(),
-                    0
-                ).getDate();
-
-
-            días += ultimoDia;
-
-        }
-
-
-        // =========================
-        // AJUSTAR MESES
-        // =========================
-
-        if (meses < 0) {
-
-
-            años--;
-
-
-            meses += 12;
-
-        }
-
-
-        // =========================
-        // MOSTRAR CONTADOR
-        // =========================
-
-        document.getElementById("years")
-            .textContent = años;
-
-
-        document.getElementById("months")
-            .textContent = meses;
-
-
-        document.getElementById("days")
-            .textContent = días;
-
-    }
-
-
-    // =========================
-    // BOTÓN CONTINUAR
-    // =========================
-
-    continueButton.addEventListener(
-        "click",
-        function () {
-
-
-            // Mostrar galería
-
-            gallery.classList.remove("hidden");
-
-
-            // Desplazarse hasta la galería
-
-            setTimeout(function () {
-
-                gallery.scrollIntoView({
-                    behavior: "smooth"
-                });
-
-            }, 100);
-
-        }
-    );
-
-
-});
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #120b18;
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+}
+
+.hidden {
+    display: none;
+}
+
+.hero, .story, .gallery {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    text-align: center;
+}
+
+.eyebrow {
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    color: #b892ff;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+h1 span {
+    color: #ff6584;
+}
+
+.description, .story-text, .gallery-text {
+    max-width: 500px;
+    color: #d0c9d6;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+button {
+    background: linear-gradient(135deg, #ff6584, #b892ff);
+    border: none;
+    color: white;
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+    box-shadow: 0 4px 15px rgba(255, 101, 132, 0.4);
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+.counter-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 16px;
+    margin: 1.5rem 0;
+    width: 100%;
+    max-width: 400px;
+}
+
+.counter {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.5rem;
+    margin: 1rem 0;
+}
+
+.counter div {
+    display: flex;
+    flex-direction: column;
+}
+
+.counter strong {
+    font-size: 2rem;
+    color: #ff6584;
+}
+
+.counter span {
+    font-size: 0.75rem;
+    color: #aaa;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    width: 100%;
+    max-width: 800px;
+    margin-top: 2rem;
+}
+
+.photo img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
