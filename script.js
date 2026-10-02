@@ -1,31 +1,57 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     // =========================
-    // ELEMENTOS DE LA PÁGINA
+    // ELEMENTOS
     // =========================
-    const boton = document.getElementById("openButton");
-    const historia = document.getElementById("story");
+    const openButton = document.getElementById("openButton");
+    const story = document.getElementById("story");
+    const letterButton = document.getElementById("letterButton");
+    const letter = document.getElementById("letter");
+    const planButton = document.getElementById("planButton");
+    const plan = document.getElementById("plan");
     const continueButton = document.getElementById("continueButton");
     const gallery = document.getElementById("gallery");
 
     // =========================
     // FECHA DE INICIO (Año, Mes, Día)
-    // Nota: Los meses en JS van de 0 (Enero) a 11 (Diciembre)
     // 14 de Febrero de 2023 -> new Date(2023, 1, 14)
     // =========================
     const fechaInicio = new Date(2023, 1, 14);
 
-    // =========================
-    // ABRIR SORPRESA
-    // =========================
-    boton.addEventListener("click", function () {
-        historia.classList.remove("hidden");
+    // 1. Abrir Historia y Contador
+    openButton.addEventListener("click", function () {
+        story.classList.remove("hidden");
         actualizarContador();
 
         setTimeout(function () {
-            historia.scrollIntoView({
-                behavior: "smooth"
-            });
+            story.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+    });
+
+    // 2. Abrir Carta
+    letterButton.addEventListener("click", function () {
+        letter.classList.remove("hidden");
+
+        setTimeout(function () {
+            letter.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+    });
+
+    // 3. Abrir Plan de Hoy
+    planButton.addEventListener("click", function () {
+        plan.classList.remove("hidden");
+
+        setTimeout(function () {
+            plan.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+    });
+
+    // 4. Abrir Galería
+    continueButton.addEventListener("click", function () {
+        gallery.classList.remove("hidden");
+
+        setTimeout(function () {
+            gallery.scrollIntoView({ behavior: "smooth" });
         }, 100);
     });
 
@@ -58,18 +84,5 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("months").textContent = meses;
         document.getElementById("days").textContent = días;
     }
-
-    // =========================
-    // BOTÓN CONTINUAR A GALERÍA
-    // =========================
-    continueButton.addEventListener("click", function () {
-        gallery.classList.remove("hidden");
-
-        setTimeout(function () {
-            gallery.scrollIntoView({
-                behavior: "smooth"
-            });
-        }, 100);
-    });
 
 });
