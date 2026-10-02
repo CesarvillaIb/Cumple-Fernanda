@@ -1,46 +1,94 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+
+    // =========================
+    // ELEMENTOS DE LA PÁGINA
+    // =========================
+
     const boton = document.getElementById("openButton");
+
     const historia = document.getElementById("story");
-    const continueButton = document.getElementById("continueButton");
 
-    const fechaInicio = new Date(2023, 1, 14);
+    const continueButton =
+        document.getElementById("continueButton");
 
-    // BOTÓN ABRIR SORPRESA
+    const gallery =
+        document.getElementById("gallery");
+
+
+    // =========================
+    // FECHA EN QUE COMENZÓ
+    // NUESTRA HISTORIA
+    // =========================
+
+    const fechaInicio =
+        new Date(2023, 1, 14);
+
+
+    // =========================
+    // ABRIR SORPRESA
+    // =========================
+
     boton.addEventListener("click", function () {
+
+
+        // Mostrar sección historia
 
         historia.classList.remove("hidden");
 
+
+        // Actualizar contador
+
         actualizarContador();
 
-        historia.scrollIntoView({
-            behavior: "smooth"
-        });
+
+        // Desplazarse suavemente
+
+        setTimeout(function () {
+
+            historia.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        }, 100);
 
     });
 
 
-    // CONTADOR
+    // =========================
+    // CONTADOR DE RELACIÓN
+    // =========================
+
     function actualizarContador() {
 
+
         const ahora = new Date();
+
 
         let años =
             ahora.getFullYear() -
             fechaInicio.getFullYear();
 
+
         let meses =
             ahora.getMonth() -
             fechaInicio.getMonth();
+
 
         let días =
             ahora.getDate() -
             fechaInicio.getDate();
 
 
+        // =========================
+        // AJUSTAR DÍAS
+        // =========================
+
         if (días < 0) {
 
+
             meses--;
+
 
             const ultimoDia =
                 new Date(
@@ -49,34 +97,71 @@ document.addEventListener("DOMContentLoaded", function () {
                     0
                 ).getDate();
 
+
             días += ultimoDia;
 
         }
 
 
+        // =========================
+        // AJUSTAR MESES
+        // =========================
+
         if (meses < 0) {
 
+
             años--;
+
 
             meses += 12;
 
         }
 
 
-        document.getElementById("years").textContent = años;
+        // =========================
+        // MOSTRAR CONTADOR
+        // =========================
 
-        document.getElementById("months").textContent = meses;
+        document.getElementById("years")
+            .textContent = años;
 
-        document.getElementById("days").textContent = días;
+
+        document.getElementById("months")
+            .textContent = meses;
+
+
+        document.getElementById("days")
+            .textContent = días;
 
     }
 
 
+    // =========================
     // BOTÓN CONTINUAR
-    continueButton.addEventListener("click", function () {
+    // =========================
 
-        alert("Aquí comenzará la siguiente parte de nuestra historia ❤️");
+    continueButton.addEventListener(
+        "click",
+        function () {
 
-    });
+
+            // Mostrar galería
+
+            gallery.classList.remove("hidden");
+
+
+            // Desplazarse hasta la galería
+
+            setTimeout(function () {
+
+                gallery.scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            }, 100);
+
+        }
+    );
+
 
 });
