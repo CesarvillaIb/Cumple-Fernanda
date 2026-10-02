@@ -83,12 +83,16 @@ document.addEventListener("DOMContentLoaded", function () {
     // BOTÓN CONTINUAR
     // =========================
 
-    continueButton.addEventListener("click", function () {
+continueButton.addEventListener("click", function () {
 
-        alert(
-            "Aquí comenzará la siguiente parte de nuestra historia ❤️"
-        );
+    const gallery = document.getElementById("gallery");
 
+    gallery.classList.remove("hidden");
+
+    gallery.scrollIntoView({
+        behavior: "smooth"
     });
+
+});
 
 });
