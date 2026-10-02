@@ -1,90 +1,82 @@
-const boton = document.getElementById("openButton");
-const historia = document.getElementById("story");
-const continueButton = document.getElementById("continueButton");
+document.addEventListener("DOMContentLoaded", function () {
 
-// =====================================
-// FECHA EN QUE COMENZÓ NUESTRA HISTORIA
-// 14 DE FEBRERO DE 2023
-// =====================================
+    const boton = document.getElementById("openButton");
+    const historia = document.getElementById("story");
+    const continueButton = document.getElementById("continueButton");
 
-const fechaInicio = new Date(2023, 1, 14);
+    const fechaInicio = new Date(2023, 1, 14);
 
-// =====================================
-// ABRIR SORPRESA
-// =====================================
+    // BOTÓN ABRIR SORPRESA
+    boton.addEventListener("click", function () {
 
-boton.addEventListener("click", function () {
+        historia.classList.remove("hidden");
 
-    historia.classList.remove("hidden");
-
-    actualizarContador();
-
-    setTimeout(function () {
+        actualizarContador();
 
         historia.scrollIntoView({
             behavior: "smooth"
         });
 
-    }, 100);
+    });
 
-});
 
-// =====================================
-// CONTADOR
-// =====================================
+    // CONTADOR
+    function actualizarContador() {
 
-function actualizarContador() {
+        const ahora = new Date();
 
-    const ahora = new Date();
+        let años =
+            ahora.getFullYear() -
+            fechaInicio.getFullYear();
 
-    let años =
-        ahora.getFullYear() -
-        fechaInicio.getFullYear();
+        let meses =
+            ahora.getMonth() -
+            fechaInicio.getMonth();
 
-    let meses =
-        ahora.getMonth() -
-        fechaInicio.getMonth();
+        let días =
+            ahora.getDate() -
+            fechaInicio.getDate();
 
-    let días =
-        ahora.getDate() -
-        fechaInicio.getDate();
 
-    if (días < 0) {
+        if (días < 0) {
 
-        meses--;
+            meses--;
 
-        const ultimoDiaMesAnterior =
-            new Date(
-                ahora.getFullYear(),
-                ahora.getMonth(),
-                0
-            ).getDate();
+            const ultimoDia =
+                new Date(
+                    ahora.getFullYear(),
+                    ahora.getMonth(),
+                    0
+                ).getDate();
 
-        días += ultimoDiaMesAnterior;
+            días += ultimoDia;
+
+        }
+
+
+        if (meses < 0) {
+
+            años--;
+
+            meses += 12;
+
+        }
+
+
+        document.getElementById("years").textContent = años;
+
+        document.getElementById("months").textContent = meses;
+
+        document.getElementById("days").textContent = días;
+
     }
 
-    if (meses < 0) {
 
-        años--;
+    // BOTÓN CONTINUAR
+    continueButton.addEventListener("click", function () {
 
-        meses += 12;
-    }
+        alert("Aquí comenzará la siguiente parte de nuestra historia ❤️");
 
-    document.getElementById("years").textContent = años;
-
-    document.getElementById("months").textContent = meses;
-
-    document.getElementById("days").textContent = días;
-}
-
-// =====================================
-// BOTÓN CONTINUAR
-// =====================================
-
-continueButton.addEventListener("click", function () {
-
-    alert(
-        "Aquí comenzará la siguiente parte de nuestra historia ❤️"
-    );
+    });
 
 });
