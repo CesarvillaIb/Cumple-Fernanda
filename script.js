@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // 3. Abrir WhatsApp tras la animación
             setTimeout(function () {
                 // Coloca tu número de teléfono real a 10 dígitos (ejemplo para México: 523312345678)
-                const miNumero = "523300000000"; 
+                const miNumero = "523142478637"; 
                 const mensaje = encodeURIComponent("¡Ya vi mi sorpresa de cumpleaños amor! 😍 Estaré listísima a las 2:00 PM para irnos a Cajititlán ❤️️✨");
                 
                 window.open(`https://wa.me/${miNumero}?text=${mensaje}`, "_blank");
